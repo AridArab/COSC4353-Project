@@ -1,0 +1,134 @@
+/*html, body{
+  height: 100%;
+}*/
+
+html{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  background-color: #2f2e2f;
+  /* background-repeat: no-repeat; */
+  /* background-image: url('images/pexels-johannes-plenio-3105242.jpg'); */
+  /* background-size: contain; */
+}
+
+div.navbar{
+  display: flex;
+  flex-direction: row;
+  background-color: #412479;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  width: 100%
+}
+
+.navbar-element{
+  display: flex;
+}
+
+a.navbar-element{
+  text-decoration: none;
+  height: 50px;
+  min-width: 50px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+#search.navbar-element{
+  height: 25px;
+  color: #7457ac;
+  justify-content: center;
+  align-items: center;
+}
+
+a.navbar-element:hover{
+  background-color: white;
+  color: #412479;
+}
+
+div.profile-form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: white;
+  color: #412479;
+  width: 500px;
+}
+
+form.profile-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+p.profile-form-title{
+  display: flex;
+  font-size: 24pt;
+  justify-content: center;
+  font-weight: bold;
+}
+
+p.profile-form-instructions{
+  color: black;
+  font-style: italic;
+}
+
+p.profile-form-instructions{
+  display: flex;
+  font-size: 10pt;
+  justify-content: center;
+}
+
+div.profile-field-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #d9d8d8;
+  border-radius: 5px;
+  color: #412479;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+p.profile-field-label{
+  margin: 5px;
+}
+
+input.profile-field{
+  flex: 1;
+  margin-left: 5px;
+  border-radius: 5px;
+  border-style: hidden;
+}
+
+.profile-submit-button{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 20px;
+  background-color: #412479;
+  color: white;
+  height: 30px;
+  border-style: hidden;
+}
+
+.profile-submit-button:hover{
+  background-color: #7457ac;
+}

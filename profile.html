@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Profile Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/profile_style.css">
+  </head>
+  <body>
+    <!-- <img src="pexels-johannes-plenio-3105242.jpg" alt="Refinery by Johannes Plenio"></img> -->
+    <div class="navbar">
+      <a href="index.html" class="navbar-element">Home</a>
+      <a href="profile.html" class="navbar-element">Profile</a>
+      <a href="quote-form.html" class="navbar-element">Quote Form</a>
+      <a href="quote-history.html" class="navbar-element">Quote History</a>
+      <input type="text" id="search" name="search" class="navbar-element" placeholder="Search">
+      <button type="submit" id="search" class="navbar-element"><i class="fa fa-search"></i></button>
+    </div>
+    <div class="profile-form-container">
+      <p class="profile-form-title">Profile Management</p>
+      <p class="profile-form-instructions">Please fill form below</p>
+      <!-- have a script upadate this to "Please update the desired fields" if profile already exists -->
+      <form class="profile-form">
+        <div class="profile-field-container">
+          <p class="profile-field-label">First Name</p>
+          <input type="text" id="fname" name="fname" class="profile-field" placeholder="John">
+        </div>
+
+        <div class="profile-field-container">
+          <p class="profile-field-label">Last Name</p>
+          <input type="text" id="lname" name="lname" class="profile-field" placeholder="Doe">
+        </div>
+
+        <div class="profile-field-container">
+          <p class="profile-field-label">Address 1</p>
+          <input type="text" id="address1" name="address1" class="profile-field" placeholder="3551 Cullen Blvd">
+        </div>
+        <div class="profile-field-container">
+          <p class="profile-field-label">Address 2</p>
+          <input type="text" id="address2" name="address2" class="profile-field" placeholder="533">
+        </div>
+
+        <div class="profile-field-container">
+          <p class="profile-field-label">City</p>
+          <input type="text" id="city" name="city" class="profile-field" placeholder="Houston">
+        </div>
+
+        <div class="profile-field-container">
+          <p class="profile-field-label">State</p>
+          <input type="text" id="state" name="state" class="profile-field" placeholder="TX">
+        </div>
+
+        <div class="profile-field-container">
+          <p class="profile-field-label">ZIP Code</p>
+          <input type="text" id="zipcode" name="zipcode" class="profile-field" placeholder="77004">
+        </div>
+
+        <input type="submit" class="profile-submit-button" value="Submit">
+        <!-- insert cancel button here -->
+      </form>
+    </div>
+  </body>
+</html>
