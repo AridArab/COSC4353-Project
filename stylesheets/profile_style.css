@@ -117,6 +117,14 @@ input.profile-field{
   border-style: hidden;
 }
 
+select.profile-field{
+  flex: 1;
+  margin-left: 5px;
+  border-radius: 5px;
+  border-style: hidden;
+  background-color: white;
+}
+
 .profile-submit-button{
   margin-top: 5px;
   margin-bottom: 5px;
