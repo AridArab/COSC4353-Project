@@ -40,6 +40,9 @@ a.navbar-element {
   display: flex;
 }
 
+
+/* Quote History Page */
+
 .history-header {
   font-family: Courier New;
   font-size: 40px;
@@ -123,6 +126,15 @@ tr.history-row:nth-child(even){
   border-radius: 500px;
   transform: rotate(340deg);
   background-color: lightgray;
+}
+
+/*------------------------------------------------------*/
+
+
+/* Home Page */
+
+.home-animation {
+  display: flex;
 }
 
 
