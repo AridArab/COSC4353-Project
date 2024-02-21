@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import QuoteHistory from './QuoteHistory.jsx';
 import Home from './Home.jsx';
-import './index.css';
+import './stylesheets/index.css';
 
 const router = createBrowserRouter([
   {

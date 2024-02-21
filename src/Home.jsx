@@ -1,4 +1,5 @@
 import NavBar from './NavBar.jsx';
+import HomeAnimation from './components/Home/HomeAnimation.jsx';
 
 
 function Home() {
@@ -6,6 +7,7 @@ function Home() {
     return(
         <>
             <NavBar/>
+            <HomeAnimation/>
         </>
     );
 }
