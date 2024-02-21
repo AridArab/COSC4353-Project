@@ -5,7 +5,7 @@ import HistoryHeader from './components/QuoteHistory/HistoryHeader.jsx';
 import RefineryImage from './components/QuoteHistory/RefineryImage.jsx';
 import Footer from './components/general/Footer.jsx'
 
-function App() {
+function QuoteHistory() {
 
   return(
     <>
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App
+export default QuoteHistory
