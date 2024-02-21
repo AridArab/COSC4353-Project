@@ -1,0 +1,131 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom right, hsl(0, 2%, 35%), white 45%);
+  background-attachment: fixed;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #412479;
+  align-items: center;
+  position: sticky;
+  width: 100%;
+  margin-top: 0px;
+}
+
+a.navbar-element {
+  text-decoration: none;
+  height: 50px;
+  min-width: 50px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.navbar-element {
+  display: flex;
+}
+
+.history-header {
+  font-family: Courier New;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+}
+
+.history-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5%;
+  margin-bottom: 3em;
+  margin-inline: 2px;
+  height: 2em;
+}
+
+input.history-search {
+  width: 500px;
+}
+
+button.history-search {
+  width: 30px;
+  height: 30px;
+}
+
+.history-table {
+  background-color: white;
+  border: 5px solid hsl(0, 1%, 48%);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  align-items: center;
+  width: fit-content;
+  max-width: 900px;
+  min-width: 700px;
+}
+
+tr.history-row {
+  height: 1.75em;
+}
+
+tr.history-row:nth-child(even){
+  background-color: hsl(0, 15%, 83%);
+  border-color: white;
+}
+
+.refinery-pic {
+  justify-content: center;
+  position: fixed;
+  width: 550px;
+  height: 550px;
+  right: -5.75%;
+  bottom: -5.75%;
+  border-radius: 500px;
+  transform: rotate(340deg);
+}
+
+
+.circle-1 {
+  justify-content: center;
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  right: -5.75%;
+  bottom: -5.75%;
+  border-radius: 500px;
+  transform: rotate(340deg);
+  background-color: gray;
+}
+
+.circle-2 {
+  justify-content: center;
+  position: fixed;
+  width: 650px;
+  height: 650px;
+  right: -5.75%;
+  bottom: -5.75%;
+  border-radius: 500px;
+  transform: rotate(340deg);
+  background-color: lightgray;
+}
+
+
+.foot {
+  margin-block: 50px;
+}
