@@ -481,7 +481,7 @@ input {
 }
 
 input:read-only {
-  background-color: #525252;
+  background-color: #8b8b8b70;
   border: 1px solid #ccc; 
   border-radius: 10px; 
   margin-left: 10px;

@@ -3,7 +3,7 @@ function QuoteBodyContainer(){
 
     return(
         <>
-        <div class="quote-body-container"></div>
+        <div className="quote-body-container"></div>
         </>
 
     );

@@ -5,7 +5,7 @@ function ImageContainer(){
     return(
 
         <>
-        <div class="image-container">
+        <div className="image-container">
             <img className="oilPump-img" src={OilPumpPic} alt="Oil Pump" />    
         </div>
         </>
