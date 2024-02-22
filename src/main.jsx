@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import QuoteHistory from './QuoteHistory.jsx';
+import QuoteForm from './QuoteForm.jsx'
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
 import LoginRegister from './LoginRegister.jsx';
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/Home",
     element: <Home/>
+  },
+  {
+    path: "/QuoteForm",
+    element: <QuoteForm/>
   },
   {
     path: "/QuoteHistory",

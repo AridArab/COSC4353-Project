@@ -94,7 +94,7 @@ input.navbar-element {
 }
 
 input.history-search {
-  width: 500px;
+  width: 400px;
 }
 
 button.history-search {
@@ -286,7 +286,7 @@ select.profile-field{
 }
 
 .button-animation#button-1 {
-  left: 55%;
+  left: 61%;
   margin-block: 4%;
   background-color: hsl(0, 83%, 47%);
   animation: button-fade 0.4s ease-in forwards;
@@ -294,7 +294,7 @@ select.profile-field{
 }
 
 .button-animation#button-2 {
-  left: 45%;
+  left: 46%;
   margin-block: 4%;
   background-color: hsl(88, 93%, 42%);
   animation: button-fade 0.4s ease-in forwards;
@@ -302,7 +302,7 @@ select.profile-field{
 }
 
 .button-animation#button-3 {
-  left: 35%;
+  left: 31%;
   margin-block: 4%;
   background-color: hsl(251, 95%, 61%);
   animation: button-fade 0.4s ease-in forwards;
@@ -472,7 +472,7 @@ select.profile-field{
   margin: 0; 
 }
 
-input {
+input.form-input {
   border: 1px solid #ccc; 
   border-radius: 10px; 
   margin-left: 10px;
@@ -480,7 +480,7 @@ input {
   flex-grow: 1; 
 }
 
-input:read-only {
+input.form-input:read-only {
   background-color: #8b8b8b70;
   border: 1px solid #ccc; 
   border-radius: 10px; 
