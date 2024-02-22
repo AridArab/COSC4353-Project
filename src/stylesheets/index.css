@@ -228,8 +228,6 @@ select.profile-field{
   background-color: #7457ac;
 }
 
-/*------------------------------------------------------*/
-
 
 /* Home Page */
 
@@ -242,7 +240,7 @@ select.profile-field{
 }
 
 .home-animation-2 > h1 {
-  margin-top: 5%;
+  margin-top: 2.5%;
   animation: fade-in-2 0.8s ease-in forwards;
   animation-delay: 0.8s;
   position: relative;
@@ -253,22 +251,66 @@ select.profile-field{
 
 
 .button-animation {
-  height: 75px;
-  width: 75px;
-  background-color: hsl(0, 1%, 62%)
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-color: white;
+  opacity: 0;
+}
+
+.button-animation#button-1 {
+  left: 55%;
+  margin-block: 4%;
+  background-color: hsl(0, 83%, 47%);
+  animation: button-fade 0.4s ease-in forwards;
+  animation-delay: 1.8s;
+}
+
+.button-animation#button-2 {
+  left: 45%;
+  margin-block: 4%;
+  background-color: hsl(88, 93%, 42%);
+  animation: button-fade 0.4s ease-in forwards;
+  animation-delay: 2.4s;
+}
+
+.button-animation#button-3 {
+  left: 35%;
+  margin-block: 4%;
+  background-color: hsl(251, 95%, 61%);
+  animation: button-fade 0.4s ease-in forwards;
+  animation-delay: 3.0s;
 }
 
 .button-animation > a#button-1 {
-  position: relative
-  
+  margin: auto;
+  align-items: center;
+  text-decoration: solid;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 30px;
 }
 
 .button-animation > a#button-2 {
-  position: relative
+  margin: auto;
+  align-items: center;
+  text-decoration: solid;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 25px;
 }
 
 .button-animation > a#button-3 {
-  position: relative
+  margin: auto;
+  align-items: center;
+  text-decoration: solid;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
 }
 
 
@@ -299,6 +341,21 @@ select.profile-field{
     top: 0px;
   }
 }
+
+@keyframes button-fade {
+  from {
+    opacity: 0;
+    display: none;
+    top: 50px;
+  }
+
+  to {
+    opacity: 1;
+    display: flex;
+    top: 0px;
+  }
+}
+
 
 .foot {
   margin-block: 50px;

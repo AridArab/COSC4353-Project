@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 function ButtonToPage(props) {
 
     return(
-        <div className="button-animation">
-            <a id={props.id} href={props.hyperlink}>{props.text}</a>
+        <div className="button-animation" id={props.buttonid}>
+            <a id={props.linkid} href={props.hyperlink}>{props.text}</a>
         </div>
     );
 
@@ -13,7 +13,8 @@ function ButtonToPage(props) {
 ButtonToPage.propTypes = {
     hyperlink: PropTypes.string,
     text: PropTypes.string,
-    id: PropTypes.string
+    buttonid: PropTypes.string,
+    linkid: PropTypes.string
 }
 
 
