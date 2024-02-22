@@ -8,7 +8,7 @@ import QuoteHistory from './QuoteHistory.jsx';
 import QuoteForm from './QuoteForm.jsx'
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
-import LoginRegister from './LoginRegister.jsx';
+import LoginRegister from './LoginandRegister.jsx';
 import './stylesheets/style.css';
 import './stylesheets/index.css';
 
