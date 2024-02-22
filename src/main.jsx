@@ -20,7 +20,12 @@ const router = createBrowserRouter([
   {
     path: "/QuoteHistory",
     element: <QuoteHistory/>
-  }
+  },
+  {
+    path: "/Profile",
+    element: <Profile/>
+  },
+
 ])
 
 
