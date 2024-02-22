@@ -2,7 +2,7 @@ import ProfileFormContainer from "./ProfileFormContainer";
 
 function ProfileBodyContainer(){
   return(
-    <div class="profile-body-container">
+    <div className="profile-body-container">
       <ProfileFormContainer/>
     </div>
   );

@@ -7,23 +7,18 @@ import {
 import QuoteHistory from './QuoteHistory.jsx';
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
-import Login from './Login and Register.jsx';
+import LoginRegister from './LoginRegister.jsx';
 import './stylesheets/style.css';
 import './stylesheets/index.css';
-import FuelQuote from './FuelQuote.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/Login",
-    element: <h1>Login!</h1>
+    element: <LoginRegister/>
   },
   {
     path: "/Home",
     element: <Home/>
-  },
-  {
-    path: "/FuelQuote",
-    element: <FuelQuote/>
   },
   {
     path: "/QuoteHistory",
@@ -33,6 +28,7 @@ const router = createBrowserRouter([
     path: "/Profile",
     element: <Profile/>
   },
+  
 
 ])
 
