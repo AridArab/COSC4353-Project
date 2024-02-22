@@ -45,7 +45,6 @@ input.navbar-element {
   max-width: 150;
 }
 
-
 /* Quote History Page */
 
 .history-header {
@@ -155,6 +154,27 @@ tr.history-row:nth-child(even){
   align-content: center;
   opacity: 0;
 }
+
+
+.button-animation {
+  height: 75px;
+  width: 75px;
+  background-color: hsl(0, 1%, 62%)
+}
+
+.button-animation > a#button-1 {
+  position: relative
+  
+}
+
+.button-animation > a#button-2 {
+  position: relative
+}
+
+.button-animation > a#button-3 {
+  position: relative
+}
+
 
 @keyframes fade-in-1 {
   from {
