@@ -44,6 +44,10 @@ a.navbar-element:hover{
   display: flex;
 }
 
+input.navbar-element {
+  min-width: 100px;
+  max-width: 150;
+}
 
 
 /* Quote History Page */
@@ -229,10 +233,72 @@ select.profile-field{
 
 /* Home Page */
 
-.home-animation {
-  display: flex;
+.home-animation-1 > h1 {
+  margin-top: 5%;
+  animation: fade-in-1 0.8s ease-in forwards;
+  position: relative;
+  justify-content: center;
+  align-content: center;
 }
 
+.home-animation-2 > h1 {
+  margin-top: 5%;
+  animation: fade-in-2 0.8s ease-in forwards;
+  animation-delay: 0.8s;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  opacity: 0;
+}
+
+
+.button-animation {
+  height: 75px;
+  width: 75px;
+  background-color: hsl(0, 1%, 62%)
+}
+
+.button-animation > a#button-1 {
+  position: relative
+  
+}
+
+.button-animation > a#button-2 {
+  position: relative
+}
+
+.button-animation > a#button-3 {
+  position: relative
+}
+
+
+@keyframes fade-in-1 {
+  from {
+    opacity: 0;
+    display: none;
+    top: 30px;
+  }
+
+  to {
+    opacity: 1;
+    display: flex;
+    top: 0px;
+  }
+}
+
+@keyframes fade-in-2 {
+  from {
+    opacity: 0;
+    display: none;
+    top: 30px;
+  }
+
+  to {
+    opacity: 1;
+    display: flex;
+    top: 0px;
+  }
+}
 
 .foot {
   margin-block: 50px;
