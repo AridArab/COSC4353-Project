@@ -12,7 +12,7 @@ import './stylesheets/index.css';
 
 const router = createBrowserRouter([
   {
-    path: "/Login and Register",
+    path: "/Login",
     element: <h1>Login!</h1>
   },
   {
