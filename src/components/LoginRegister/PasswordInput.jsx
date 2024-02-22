@@ -1,6 +1,6 @@
 // PasswordInput.js
 //import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fortawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
 
 const PasswordInput = ({ placeholder }) => {
