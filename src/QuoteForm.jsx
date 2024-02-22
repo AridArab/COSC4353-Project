@@ -4,7 +4,7 @@ import QuoteFormContainer from './components/QuoteForm/QuoteFormContainer.jsx';
 import QuoteBodyContainer from './components/QuoteForm/QuoteBodyContainer.jsx';
 import Footer from './components/general/Footer.jsx'
 
-function FuelQuote() {
+function QuoteForm() {
 
   return(
     <>
@@ -17,4 +17,4 @@ function FuelQuote() {
   );
 }
 
-export default FuelQuote
+export default QuoteForm
