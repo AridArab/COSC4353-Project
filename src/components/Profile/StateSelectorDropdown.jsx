@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 function StateSelectorDropdown(props){
   return(
-    <select id="country-state" name="country-state" class={props.class}>
+    <select id="country-state" name="country-state" className={props.className}>
       <option value="">Select state</option>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
@@ -60,7 +60,7 @@ function StateSelectorDropdown(props){
 }
 
 StateSelectorDropdown.propTypes = {
-  class: PropTypes.string
+  className: PropTypes.string
 }
 
 export default StateSelectorDropdown;
