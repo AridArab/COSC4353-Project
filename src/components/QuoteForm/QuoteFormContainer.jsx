@@ -29,6 +29,7 @@ function QuoteFormContainer() {
                     <input
                         type="number"
                         id="gallonsRequested"
+                        className="form-input"
                         name="gallonsRequested"
                         value={gallonsRequested}
                         onChange={e => setGallonsRequested(parseFloat(e.target.value) || '')}
@@ -39,6 +40,7 @@ function QuoteFormContainer() {
                     <input
                         type="text"
                         id="deliveryAddress"
+                        className="form-input"
                         name="deliveryAddress"
                         value={deliveryAddress}
                         readOnly />
@@ -48,6 +50,7 @@ function QuoteFormContainer() {
                     <input
                         type="date"
                         id="deliveryDate"
+                        className="form-input"
                         name="deliveryDate"
                         required />
                 </div>
@@ -56,6 +59,7 @@ function QuoteFormContainer() {
                     <input
                         type="number"
                         id="suggestedPrice"
+                        className="form-input"
                         name="suggestedPrice"
                         value={suggestedPrice}
                         readOnly />
@@ -65,6 +69,7 @@ function QuoteFormContainer() {
                     <input
                         type="text"
                         id="totalAmountDue"
+                        className="form-input"
                         name="totalAmountDue"
                         value={totalAmountDue}
                         readOnly />
