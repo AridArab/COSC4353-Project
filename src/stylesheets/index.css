@@ -15,33 +15,56 @@ body {
 }
 
 .navbar {
+  width: 100%; 
+  background-color: rgba(26, 3, 88, 0.836); 
+  color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
-  flex-direction: row;
-  background-color: #412479;
   align-items: center;
-  position: sticky;
-  width: 100%;
-  margin-top: 0px;
-}
-
-a.navbar-element {
-  text-decoration: none;
-  height: 50px;
-  min-width: 50px;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  padding-right: 25px;
-  padding-left: 25px;
-}
-
-a.navbar-element:hover{
-  background-color: #7457ac;
+  padding: 20 20px; 
+  position: fixed; 
+  top: 0;
+  z-index: 1; 
 }
 
 .navbar-element {
+  list-style-type: none;
   display: flex;
+  margin: 10;
+  padding: 10;
+  color: white;
+  font-size: 15pt;
+  text-decoration: none;
+  padding: 15px 35px;
+}
+
+.navbar-element:hover {
+  background-color: #ffffff;
+  color: #000000; 
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+}
+
+input.navbar-search {
+  padding: 5px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+button.navbar-search {
+  padding: 5px 10px;
+  background-color: #ffffff; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.navbar-search:hover {
+  background-color: #5c5c5c;
 }
 
 input.navbar-element {
@@ -359,4 +382,150 @@ select.profile-field{
 
 .foot {
   margin-block: 50px;
+}
+
+/* Fuel Quote Page */
+
+.quote-body-container {
+    
+  background-color: rgba(32, 29, 29, 0.87);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  min-height: 75vh;
+  position: relative; 
+  z-index: -1;
+}
+
+.oilPump-img {
+
+  height: 1000px;
+  width: 100%;
+}
+
+.image-container {
+  position:relative;
+  display: inline-block; 
+
+}
+
+.image-container::after {
+  width: 100%; 
+  height: auto; 
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(36, 23, 63, 0.575); 
+  pointer-events: none; 
+}
+
+.quote-form-container{
+  width: 650px; 
+  margin: auto; 
+  border-radius: 5px;
+  margin-top: -800px;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 20px; 
+  background-color: rgb(255, 255, 255);
+}
+
+.quote-form-container h1{
+  color: rgb(62, 19, 112);
+  text-align: center;
+  font-size: 40pt;
+  margin-bottom: 45px;
+
+}
+.quote-form-container h2{
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-style: italic;
+  font-size: 13pt
+}
+
+.quote-form-bubble {
+  background-color: rgba(70, 70, 70, 0.205); 
+  color: rgb(84, 39, 136);
+  border-radius: 5px; 
+  padding: 10px 20px; 
+  margin: 18px 0; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.quote-form-container label {
+  color: rgb(76, 43, 153);
+  margin-bottom: 0; 
+  background-color: transparent; 
+  font-size: 16pt;
+  display: block; 
+  margin: 0; 
+}
+
+input {
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  margin-left: 10px;
+  padding: 8px; 
+  flex-grow: 1; 
+}
+
+input:read-only {
+  background-color: #525252;
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  margin-left: 10px;
+  padding: 8px; 
+  flex-grow: 1; 
+}
+
+#editProfile {
+  background-color: rgb(197, 195, 201); 
+  color: rgb(72, 30, 128); 
+  padding: 5px 5px; 
+  margin-top: 40px;
+  border: 0px; 
+  border-radius: 30px; 
+  border: 2px solid rgb(65, 21, 116);
+  cursor: pointer; 
+  font-size: 16pt; 
+  display: block; 
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+#editProfile:hover {
+  background-color: rgb(26, 3, 88); 
+  color: white;
+  border: 2px solid rgb(0, 0, 0);
+}
+#confirmOrder {
+  background-color: rgb(65, 36, 121); 
+  color: rgb(255, 255, 255); 
+  padding: 5px 5px; 
+  margin: 15px 0; 
+  border: 0px; 
+  border-radius: 30px; 
+  border: 2px solid rgb(65, 21, 116);
+  cursor: pointer; 
+  font-size: 16pt; 
+  display: block; 
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+#confirmOrder:hover {
+  background-color: rgb(26, 3, 88); 
+  color: white;
+  border: 2px solid rgb(0, 0, 0);
 }
