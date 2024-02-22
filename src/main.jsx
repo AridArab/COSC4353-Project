@@ -7,14 +7,14 @@ import {
 import QuoteHistory from './QuoteHistory.jsx';
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
-import Login from './login and register.jsx';
+import LoginRegister from './LoginRegister.jsx';
 import './stylesheets/style.css';
 import './stylesheets/index.css';
 
 const router = createBrowserRouter([
   {
     path: "/Login",
-    element: <LoginRegisterForm/>
+    element: <LoginRegister/>
   },
   {
     path: "/Home",
