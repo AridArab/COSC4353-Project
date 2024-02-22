@@ -1,5 +1,6 @@
 import NavBar from './NavBar.jsx';
-import HomeAnimation from './components/Home/HomeAnimation.jsx';
+import HomeAnimationOne from './components/Home/HomeAnimationOne.jsx';
+import HomeAnimationTwo from './components/Home/HomeAnimationTwo.jsx';
 
 
 function Home() {
@@ -7,7 +8,8 @@ function Home() {
     return(
         <>
             <NavBar/>
-            <HomeAnimation/>
+            <HomeAnimationOne/>
+            <HomeAnimationTwo/>
         </>
     );
 }
