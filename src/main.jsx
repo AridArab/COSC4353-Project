@@ -7,7 +7,7 @@ import {
 import QuoteHistory from './QuoteHistory.jsx';
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
-import LoginRegisterForm from './Login and Register.jsx';
+import Login from './login and register.jsx';
 import './stylesheets/style.css';
 import './stylesheets/index.css';
 
