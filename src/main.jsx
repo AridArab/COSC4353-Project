@@ -8,6 +8,7 @@ import QuoteHistory from './QuoteHistory.jsx';
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
 import './stylesheets/index.css';
+import FuelQuote from './FuelQuote.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/Home",
     element: <Home/>
+  },
+  {
+    path: "/FuelQuote",
+    element: <FuelQuote/>
   },
   {
     path: "/QuoteHistory",
