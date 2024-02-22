@@ -4,7 +4,7 @@ import UsernameInput from './components/LoginRegister/Username'; // Import Usern
 import ConfirmPasswordInput from './components/LoginRegister/ConfirmPassword'; // Import the ConfirmPasswordInput
 
 const LoginRegister = () => {
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignUp, /*setIsSignUp*/] = useState(true);
 
   return (
     <div className="container" style={{ display: 'block' }}>
