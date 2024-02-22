@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './style.css';
-import PasswordInput from 'components/Login and Register Components./Password'; // Password Input
-import UsernameInput from 'components/Login and Register Components../Username'; // Import Username
-import ConfirmPasswordInput from 'components/Login and Register Components../ConfirmPassword'; // Import the ConfirmPasswordInput
+import PasswordInput from 'components/Login and Register Components/Password'; // Password Input
+import UsernameInput from 'components/Login and Register Components/Username'; // Import Username
+import ConfirmPasswordInput from 'components/Login and Register Components/ConfirmPassword'; // Import the ConfirmPasswordInput
 
 const LoginRegisterForm = () => {
   const [isSignUp, setIsSignUp] = useState(true);
