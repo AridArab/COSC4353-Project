@@ -1,12 +1,12 @@
 import NavBar from './NavBar.jsx';
-import { ProfileFormContainer } from './components/Profile'
-import { Footer } from `./components/general`
+import ProfileBodyContainer from './components/Profile/ProfileBodyContainer.jsx';
+import Footer from './components/general/Footer.jsx';
 
 function Profile(){
   return(
     <>
       <NavBar/>
-      <ProfileFormContainer/>
+      <ProfileBodyContainer/>
       <Footer/>
     </>
   );

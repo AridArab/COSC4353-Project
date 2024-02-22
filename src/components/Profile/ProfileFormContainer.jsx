@@ -1,4 +1,4 @@
-import StateSelectorDropdown from StateSelectorDropdown;
+import StateSelectorDropdown from './StateSelectorDropdown.jsx';
 
 function ProfileFormContainer(){
   return(

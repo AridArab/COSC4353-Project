@@ -36,9 +36,14 @@ a.navbar-element {
   padding-left: 25px;
 }
 
+a.navbar-element:hover{
+  background-color: #7457ac;
+}
+
 .navbar-element {
   display: flex;
 }
+
 
 
 /* Quote History Page */
@@ -130,6 +135,12 @@ tr.history-row:nth-child(even){
 
 /* Profile Page */
 
+div.profile-body-container{
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
+
 div.profile-form-container{
   display: flex;
   flex-direction: column;
@@ -157,9 +168,6 @@ p.profile-form-title{
 p.profile-form-instructions{
   color: black;
   font-style: italic;
-}
-
-p.profile-form-instructions{
   display: flex;
   font-size: 10pt;
   justify-content: center;
