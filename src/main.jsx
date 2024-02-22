@@ -8,6 +8,7 @@ import QuoteHistory from './QuoteHistory.jsx';
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
 import Login from './Login and Register.jsx';
+import './stylesheets/style.css';
 import './stylesheets/index.css';
 
 const router = createBrowserRouter([
