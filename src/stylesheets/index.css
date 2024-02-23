@@ -281,14 +281,20 @@ select.profile-field{
   height: 150px;
   width: 150px;
   border-radius: 100px;
-  background-color: white;
+  background-color: rgba(26, 3, 88, 1);
   opacity: 0;
+  z-index: 0;
+  box-shadow: 5px 5px 10px;
+}
+
+.button-animation:hover {
+  transition: 0.2s;
+  transform: scale(1.05);
 }
 
 .button-animation#button-1 {
   left: 61%;
   margin-block: 4%;
-  background-color: hsl(0, 83%, 47%);
   animation: button-fade 0.4s ease-in forwards;
   animation-delay: 1.8s;
 }
@@ -296,7 +302,6 @@ select.profile-field{
 .button-animation#button-2 {
   left: 46%;
   margin-block: 4%;
-  background-color: hsl(88, 93%, 42%);
   animation: button-fade 0.4s ease-in forwards;
   animation-delay: 2.4s;
 }
@@ -304,7 +309,6 @@ select.profile-field{
 .button-animation#button-3 {
   left: 31%;
   margin-block: 4%;
-  background-color: hsl(251, 95%, 61%);
   animation: button-fade 0.4s ease-in forwards;
   animation-delay: 3.0s;
 }
@@ -313,7 +317,9 @@ select.profile-field{
   margin: auto;
   align-items: center;
   text-decoration: solid;
-  color: black;
+  color: white;
+  background-color: hsl(241, 86%, 34%);
+  border-radius: 5px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 30px;
 }
@@ -322,7 +328,9 @@ select.profile-field{
   margin: auto;
   align-items: center;
   text-decoration: solid;
-  color: black;
+  color: white;
+  background-color: hsl(241, 86%, 34%);
+  border-radius: 5px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 25px;
 }
@@ -331,7 +339,9 @@ select.profile-field{
   margin: auto;
   align-items: center;
   text-decoration: solid;
-  color: black;
+  color: white;
+  background-color: hsl(241, 86%, 34%);
+  border-radius: 5px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 20px;
 }
@@ -377,6 +387,24 @@ select.profile-field{
     display: flex;
     top: 0px;
   }
+}
+
+
+.home-refinery-img {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.home-refinery-img > img {
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  position: absolute;
+  top: 10%;
+  margin-bottom: 0;
+  opacity: 40%;
+  z-index: -1;
 }
 
 
