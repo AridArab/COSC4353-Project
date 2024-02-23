@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
 
 const LoginRegisterForm = () => {
   const [isSignUp, setIsSignUp] = useState(true);
