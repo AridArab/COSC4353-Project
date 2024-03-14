@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python/Flask
+venv
+__pycache__
+.env
+.venv
+
+# Deprecated directories
+app_flask
+app_fastapi_old
