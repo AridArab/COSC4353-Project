@@ -26,7 +26,7 @@ def get_user_by_username(username: str, db: Session):
     return user
 
 # Update
-def update_user(user_id: int, updated_user: schemas.User, db: Session):
+def update_user(user_id: int, updated_user: schemas.UserUpdate, db: Session):
     user = db.query(models.User).filter(models.User.id == user_id).first()
     
     for field, value in updated_user.dict().items():
@@ -36,18 +36,15 @@ def update_user(user_id: int, updated_user: schemas.User, db: Session):
     db.refresh(user)
     return user
 
-def update_user_password(userid: int, updated_user: schemas.UserUpdatePassword, db: Session):
+def update_user_password(user_id: int, updated_user: schemas.UserUpdatePassword, db: Session):
     user = db.query(models.User).filter(models.User.id == user_id).first()
+    
     hashed_password = ph.hash(updated_user.password)
-    # enforce updating password without changing username (probably unncessary)
-    user = models.User(username = user.username, hashed_password = hashed_password)
-    #for field, value in updated_user.dict().items():
-    #    setattr(user, field, value)
+    setattr(user, "hashed_password", hashed_password)
 
     db.commit()
     db.refresh(user)
     return user
-    
 
 # Delete
 #def delete_user(user_id: int, db: Session):

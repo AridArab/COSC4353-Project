@@ -29,6 +29,9 @@ __pycache__
 .env
 .venv
 
+# Database files
+*.db
+
 # Deprecated directories
 app_flask
 app_fastapi_old

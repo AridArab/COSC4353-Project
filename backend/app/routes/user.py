@@ -35,7 +35,7 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
     return db_user
 
 # Update
-@router.put("/user/{user_id}/edit", response_model=schemas.User)
+@router.put("/user/{user_id}/edit", response_model=schemas.UserUpdate)
 def update_user(user_id: int, updated_user: schemas.UserUpdate, db: Session = Depends(get_db)):
     db_user = crud.get_user(user_id, db)
     if not db_user:
@@ -47,7 +47,7 @@ def update_user_password(user_id: int, updated_user: schemas.UserUpdatePassword,
     db_user = crud.get_user(user_id, db)
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
-    return crud.update_user(user_id, updated_user, db)
+    return crud.update_user_password(user_id, updated_user, db)
 
 # TODO: do we need a response_model here?
 # Delete

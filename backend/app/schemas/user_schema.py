@@ -4,11 +4,11 @@ from pydantic import BaseModel
 class UserBase(BaseModel):
     username: str
 
-class UserCreate(BaseModel):
+class UserCreate(UserBase):
     password: str
 
-class UserUpdatePassword(UserCreate):
-    pass
+class UserUpdatePassword(BaseModel):
+    password: str
 
 class UserUpdate(UserBase):
     is_enabled: bool

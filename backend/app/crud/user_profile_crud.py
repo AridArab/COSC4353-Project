@@ -2,7 +2,6 @@ from sqlalchemy.orm import Session
 import app.models.user_profile_model as models
 import app.schemas.user_profile_schema as schemas
 
-# TODO: figure out how to make this more consistent (somehow use UserProfileCreate)
 # Create
 def create_profile(userid: int, profile: schemas.UserProfileCreate, db: Session):
     db_profile = models.UserProfile(
