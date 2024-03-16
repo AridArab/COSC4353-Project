@@ -42,7 +42,7 @@ def update_user(user_id: int, updated_user: schemas.UserUpdate, db: Session = De
         raise HTTPException(status_code=404, detail="User not found")
     return crud.update_user(user_id, updated_user, db)
 
-@router.put("/user/{user_id}/changepassword", response_model=schemas.User)
+@router.put("/user/{user_id}/resetpassword", response_model=schemas.User)
 def update_user_password(user_id: int, updated_user: schemas.UserUpdatePassword, db: Session = Depends(get_db)):
     db_user = crud.get_user(user_id, db)
     if not db_user:
