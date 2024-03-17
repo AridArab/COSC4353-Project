@@ -10,7 +10,7 @@ from pydantic import BaseModel
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 
-import app.schemas.user_schema as schemas
+from app.schemas.user_schema import User
 import app.crud.user_crud as crud
 
 from app.database import SessionLocal
@@ -18,7 +18,7 @@ from app.database import SessionLocal
 
 ph = PasswordHasher()
 
-# TODO: put this in .env
+# TODO: regenerate this and put in .env
 SECRET_KEY = "276c5a682dade8e46caae516df42078a6e503a440bbfddecd410552f5584961d"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
@@ -85,7 +85,7 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: Se
     return user
 
 async def get_current_active_user(
-    current_user: Annotated[schemas.User, Depends(get_current_user)]
+    current_user: Annotated[User, Depends(get_current_user)]
 ):
     # NOTE: seems leaky
     if not current_user.is_enabled:

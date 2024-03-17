@@ -30,6 +30,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="User already exists")
     return crud.create_user(user, db)
 
+'''
 # Read
 @router.get("/user/{user_id}", response_model=schemas.User)
 def get_user(user_id: int, db: Session = Depends(get_db)):
@@ -58,7 +59,9 @@ def update_user_password(user_id: int, updated_user: schemas.UserUpdatePassword,
 #@app.delete("/user/{user_id}", response_model=schemas.User)
 #def delete_user(user_id: int, db: Session = Depends(get_db)):
 #    pass
+'''
 
+# TODO: move this to auth library
 @router.post("/token")
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
@@ -77,10 +80,20 @@ async def login_for_access_token(
     )
     return Token(access_token=access_token, token_type="bearer")
 
-
 @router.get("/user/me/", response_model=schemas.User)
-async def read_users_me(
+async def read_user_me(
     current_user: Annotated[schemas.User, Depends(get_current_active_user)]
 ):
     return current_user
+
+@router.put("/user/me/resetpassword", response_model=schemas.User)
+async def update_user_password_me(
+    current_user: Annotated[schemas.User, Depends(get_current_active_user)],
+    updated_user: schemas.UserUpdatePassword,
+    db: Session = Depends(get_db)
+):
+    db_user = crud.get_user(current_user.id, db)
+    if not db_user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return crud.update_user_password(current_user.id, updated_user, db)
 
