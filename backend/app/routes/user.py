@@ -62,7 +62,7 @@ def update_user_password(user_id: int, updated_user: schemas.UserUpdatePassword,
 '''
 
 # TODO: move this to auth library
-@router.post("/token")
+@router.post("/login")
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
     db: Session = Depends(get_db)
