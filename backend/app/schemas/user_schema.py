@@ -14,8 +14,8 @@ class UserUpdate(UserBase):
     is_enabled: bool
 
 class User(UserBase):
-    # id: int 
-    # is_enabled: bool
+    id: int 
+    is_enabled: bool
 
     class Config:
         from_attributes = True
