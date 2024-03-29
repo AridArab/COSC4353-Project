@@ -1,0 +1,64 @@
+import pytest
+from argon2 import PasswordHasher
+
+from unittest.mock import patch
+from jose import jwt
+from datetime import timedelta
+from app.auth import (
+    authenticate_user,
+    create_access_token,
+    get_current_user,
+    get_password_hash,
+    SECRET_KEY,
+    ALGORITHM
+)
+from app.models.user_model import User  # Adjust this import based on your actual User model location
+from app.db_mockTest import get_db  # Adjust if your dependency is defined elsewhere
+from .db_mockTest import override_get_db  # Ensure correct import path
+
+# Assuming your password hasher utility function is imported correctly
+ph = PasswordHasher()
+
+@pytest.fixture
+def mock_user():
+    # Emulate the User model including hashed_password
+    # Adjust as needed to match your User model definition
+    user_data = {
+        "id": 1,
+        "username": "testuser",
+        "hashed_password": get_password_hash("testpassword"),
+        "is_enabled": True
+    }
+    return User(**user_data)
+
+@pytest.fixture
+def db_session(override_get_db):
+    # Use the override_get_db fixture to create a temporary session for test
+    db = next(override_get_db())
+    yield db
+    db.rollback()
+
+@patch("app.auth.crud.get_user_by_username")
+def test_authenticate_user_success(mock_get_user_by_username, mock_user, db_session):
+    mock_get_user_by_username.return_value = mock_user
+    # Directly pass the db_session fixture
+    user = authenticate_user("testuser", "testpassword", db_session)
+    assert user.username == "testuser"
+    # Ensure that the password is verified correctly
+    assert ph.verify(user.hashed_password, "testpassword")
+
+@pytest.mark.asyncio
+async def test_create_access_token(mock_user):
+    user_data = {"sub": mock_user.username}
+    token = create_access_token(data=user_data, expires_delta=timedelta(minutes=30))
+    decoded_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    assert decoded_data.get("sub") == mock_user.username
+
+@pytest.mark.asyncio
+@patch("app.auth.jwt.decode")
+@patch("app.auth.crud.get_user_by_username")
+async def test_get_current_user(mock_get_user_by_username, mock_jwt_decode, mock_user, db_session):
+    mock_get_user_by_username.return_value = mock_user
+    mock_jwt_decode.return_value = {"sub": mock_user.username}
+    user = await get_current_user("dummy_token", db_session)
+    assert user.username == mock_user.username
