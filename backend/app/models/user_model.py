@@ -8,7 +8,7 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
-    username = Column(Integer, unique=True)
+    username = Column(String, unique=True)
     hashed_password = Column(String)
     is_enabled = Column(Boolean, default=True)
 

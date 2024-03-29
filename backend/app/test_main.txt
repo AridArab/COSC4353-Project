@@ -1,0 +1,74 @@
+# test_app.py
+from fastapi.testclient import TestClient
+from unittest.mock import patch
+from datetime import datetime
+from main import app  # Adjust this import to your project structure
+from your_project.dependencies import override_get_db  # Placeholder for your dependency override function
+
+client = TestClient(app)
+
+# Assuming override_get_db is your dependency override that provides a test database session
+app.dependency_overrides[app.get_db] = override_get_db
+
+# Mock user object to use for authentication dependency overrides
+mock_user = {
+    "id": 1,
+    "username": "testuser",
+    "email": "testuser@example.com",
+    "is_active": True,
+    "is_authenticated": True
+}
+
+@patch("app.routes.user.get_current_active_user", return_value=mock_user)
+def test_create_user_profile(mock_auth):
+    response = client.post(
+        "/api/user/me/profile/create",
+        json={
+            "fname": "John",
+            "lname": "Doe",
+            "address1": "123 Main St",
+            "city": "Anytown",
+            "state": "Anystate",
+            "zipcode": "12345"
+        },
+    )
+    assert response.status_code == 200
+    # Add assertions to verify the response content if needed
+
+@patch("app.routes.user.get_current_active_user", return_value=mock_user)
+def test_get_user_profile(mock_auth):
+    response = client.get("/api/user/me/profile")
+    assert response.status_code == 200
+    # Add assertions to verify the response content if needed
+
+@patch("app.routes.user.get_current_active_user", return_value=mock_user)
+def test_update_user_profile(mock_auth):
+    response = client.put(
+        "/api/user/me/profile/edit",
+        json={
+            "fname": "Jane",
+            "lname": "Doe",
+            "address1": "1234 Main St",
+            "city": "Anytown",
+            "state": "Anystate",
+            "zipcode": "12345"
+        },
+    )
+    assert response.status_code == 200
+    # Add assertions to verify the response content if needed
+
+@patch("app.routes.user.get_current_active_user", return_value=mock_user)
+def test_create_quote(mock_auth):
+    response = client.post(
+        "/api/user/me/quote/create",
+        json={
+            "gallons": 100,
+            "date": datetime.now().isoformat(),
+            "state": "TX"
+        },
+    )
+    assert response.status_code == 200
+    # Add assertions to verify the response content if needed
+
+# Add more tests for other endpoints, including failure scenarios
+
