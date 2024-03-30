@@ -1,6 +1,31 @@
 import StateSelectorDropdown from './StateSelectorDropdown.jsx';
+import Axios from 'axios';
 
 function ProfileFormContainer(){
+  const handleSubmit = async (event) => {
+    event.preventDefault(); 
+
+    const formData = {
+      firstName: event.target.fname.value,
+      lastName: event.target.lname.value,
+      address1: event.target.address1.value,
+      address2: event.target.address2.value,
+      city: event.target.city.value,
+      state: event.target['country-state'].value, // Access the selected state
+      zipCode: event.target.zipcode.value,
+    };
+
+    try {
+      const response = await Axios.post('http://localhost:5173/api/user_profile', formData);
+      console.log('Form submitted successfully', response.data);
+      // Add success handling code 
+    } catch (error) {
+      console.error('Form submission error', error);
+      // Add error handling code 
+    }
+  };
+
+
   return(
     <div className="profile-form-container">
       <p className="profile-form-title">Profile Management</p>
