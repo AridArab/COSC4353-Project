@@ -16,7 +16,7 @@ function ProfileFormContainer(){
     };
 
     try {
-      const response = await Axios.post('http://localhost:5173/routes/user_profile', formData);
+      const response = await Axios.post('http://localhost:5173/api/user_profile', formData);
       console.log('Form submitted successfully', response.data);
       // Add success handling code 
     } catch (error) {
