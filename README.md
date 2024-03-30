@@ -1,1 +1,1 @@
-UML diagram for COSC 4353
+Group project by Software Design Group 40 in class COSC 4353
