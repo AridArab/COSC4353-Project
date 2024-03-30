@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Axios from 'axios';
 const LoginRegisterForm = () => {
   const [isSignUp, setIsSignUp] = useState(true);
 
@@ -15,7 +15,57 @@ const LoginRegisterForm = () => {
   const handleSignUpClick = () => {
     setIsSignUp(true);
   };
-
+  const registerUser = async (username, password) => {
+    try {
+      const response = await axios.post('http://localhost:5173/user', {
+        username,
+        password 
+      });
+      console.log('User registered:', response.data);
+    } catch (error) {
+      console.error('Registration error:', error.response.data);
+    }
+  };
+  const loginUser = async (username, password) => {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+  
+    try {
+      const response = await axios.post('http://localhost:5173/login', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+      localStorage.setItem('token', response.data.access_token); // Store the token
+      console.log('Login successful:', response.data);
+    } catch (error) {
+      console.error('Login error:', error.response.data);
+    }
+  };
+  const fetchUserProfile = async () => {
+    try {
+      const response = await axios.get('http://localhost:5173/user/me/', {
+        headers: { 
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      console.log('Profile:', response.data);
+    } catch (error) {
+      console.error('Error fetching profile:', error.response.data);
+    }
+  };
+  const updateUserPassword = async (newPassword) => {
+    try {
+      const response = await axios.put('http://localhost:5173/user/me/resetpassword', {
+        password: newPassword, // Adjust accordingly
+      }, {
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+      });
+      console.log('Password updated:', response.data);
+    } catch (error) {
+      console.error('Error updating password:', error.response.data);
+    }
+  };
+  
   return (
     <div className="container" style={{ display: 'block' }}>
       <div className="form-box">
