@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function QuoteFormContainer() {
     const [gallonsRequested, setGallonsRequested] = useState('');
@@ -18,6 +19,23 @@ function QuoteFormContainer() {
     useEffect(() => {
         calculateTotalAmountDue();
     }, [gallonsRequested, suggestedPrice]);
+    const handleConfirmOrder = async () => {
+        const formData = {
+            gallonsRequested,
+            deliveryAddress,
+            suggestedPrice,
+            totalAmountDue,
+           
+        };
+        try {
+            const response = await axios.post('http://localhost:5173/api/user_quotes_crud', formData);
+            console.log('Order confirmed:', response.data);
+            // Handle further actions, e.g., showing a success message, redirecting, etc.
+        } catch (error) {
+            console.error('Failed to confirm order:', error);
+            // Handle error, e.g., showing an error message
+        }
+    };
 
     return (
         <div className="quote-form-container">
