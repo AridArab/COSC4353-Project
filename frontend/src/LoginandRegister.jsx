@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
+import React, { useState } from 'react';
+import axios from 'axios';
+
 const LoginRegisterForm = () => {
   const [isSignUp, setIsSignUp] = useState(true);
-
-  useEffect(() => {
-    // This effect replaces the DOMContentLoaded listener
-    // Any initialization logic can go here
-  }, []);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSignInClick = () => {
     setIsSignUp(false);
@@ -15,93 +14,125 @@ const LoginRegisterForm = () => {
   const handleSignUpClick = () => {
     setIsSignUp(true);
   };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+    if (isSignUp) {
+      // Call registerUser function
+      await registerUser(username, password);
+    } else {
+      // Call loginUser function
+      await loginUser(username, password);
+    }
+    // Redirect logic after signup/login (e.g., to home page)
+    window.location.href = '/home'; // Example redirect to '/home' page
+  };
+
   const registerUser = async (username, password) => {
     try {
       const response = await axios.post('http://localhost:5173/user', {
         username,
-        password 
+        password
       });
       console.log('User registered:', response.data);
+      // Redirect to home page or display a success message
     } catch (error) {
       console.error('Registration error:', error.response.data);
+      // Handle registration error (e.g., display error message)
     }
   };
+
   const loginUser = async (username, password) => {
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-  
     try {
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
       const response = await axios.post('http://localhost:5173/login', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       localStorage.setItem('token', response.data.access_token); // Store the token
       console.log('Login successful:', response.data);
+      // Redirect to home page or display a success message
     } catch (error) {
       console.error('Login error:', error.response.data);
+      // Handle login error (e.g., display error message)
     }
   };
-  const fetchUserProfile = async () => {
-    try {
-      const response = await axios.get('http://localhost:5173/user/me/', {
-        headers: { 
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      console.log('Profile:', response.data);
-    } catch (error) {
-      console.error('Error fetching profile:', error.response.data);
-    }
-  };
-  const updateUserPassword = async (newPassword) => {
-    try {
-      const response = await axios.put('http://localhost:5173/user/me/resetpassword', {
-        password: newPassword, // Adjust accordingly
-      }, {
-        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-      });
-      console.log('Password updated:', response.data);
-    } catch (error) {
-      console.error('Error updating password:', error.response.data);
-    }
-  };
-  
+
   return (
     <div className="container" style={{ display: 'block' }}>
       <div className="form-box">
         <h1 id="title">{isSignUp ? 'Sign Up' : 'Sign In'}</h1>
-        <form>
+        <form onSubmit={handleFormSubmit}>
           <div className="input-group">
             <div className="input-field">
               <i className="fa-solid fa-circle-user"></i>
-              <input type="text" placeholder="Username" />
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </div>
             <div className="input-field">
               <i className="fa-solid fa-key"></i>
-              <input type="password" placeholder="Password" />
-              {isSignUp && <span className="icon-arrow"><i className="fa-solid fa-arrow-right"></i></span>}
-              <button type="submit" className="login-btn"><i className="fa-solid fa-arrow-right"></i></button>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {isSignUp && (
+                <span className="icon-arrow">
+                  <i className="fa-solid fa-arrow-right"></i>
+                </span>
+              )}
             </div>
             {isSignUp && (
               <div className="input-field" id="confirmPasswordField">
                 <i className="fa-solid fa-key"></i>
-                <input type="password" placeholder="Confirm Password" />
-                <span className="icon-arrow"><i className="fa-solid fa-arrow-right"></i></span> 
-                <button type="submit" className="login-btn"><i className="fa-solid fa-arrow-right"></i></button>
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <span className="icon-arrow">
+                  <i className="fa-solid fa-arrow-right"></i>
+                </span>
               </div>
             )}
           </div>
           {!isSignUp && (
-            <p id="forgotPasswordLink">Forgot Password? <a href="#">Click Here!</a></p>
+            <p id="forgotPasswordLink">
+              Forgot Password? <a href="#">Click Here!</a>
+            </p>
           )}
           <div className="btn-field">
-            <button type="button" id="signupBtn" onClick={handleSignUpClick} className={isSignUp ? 'disable' : ''}>New User</button>
-            <button type="button" id="signinBtn" onClick={handleSignInClick} className={!isSignUp ? 'disable' : ''}>Returning Client</button>
+            <button
+              type="button"
+              id="signupBtn"
+              onClick={handleSignUpClick}
+              className={isSignUp ? 'disable' : ''}
+            >
+              New User
+            </button>
+            <button
+              type="button"
+              id="signinBtn"
+              onClick={handleSignInClick}
+              className={!isSignUp ? 'disable' : ''}
+            >
+              Returning Client
+            </button>
           </div>
+          <button type="submit" className="login-btn">
+            <i className="fa-solid fa-arrow-right"></i>
+          </button>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default LoginRegisterForm;
