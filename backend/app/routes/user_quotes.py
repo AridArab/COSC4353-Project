@@ -1,3 +1,4 @@
+from smtplib import quotedata
 from typing import Annotated
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
@@ -9,9 +10,10 @@ import app.models.user_quotes_model as models
 import app.schemas.user_quotes_schema as schemas
 from app.schemas.user_schema import User
 from app.auth import get_current_active_user
-
+import PricingModule
 
 router = APIRouter()
+pricing_module = PricingModule()
 
 def get_db():
     db = SessionLocal()
@@ -27,6 +29,24 @@ async def create_quote(
     quote: schemas.UserQuotesCreate,
     db: Session = Depends(get_db)
 ):
+    is_in_state = True
+    has_history = False
+    suggested_price_per_gallon, total_price = pricing_module.calculate_price(
+        quotedata.gallons, 
+        is_in_state, 
+        has_history
+    )
+    # Create a new quote object to be saved in the database
+    new_quote = models.UserQuotes(
+        userid=current_user.id,
+        address="User's address",  # Replace with actual address logic
+        gallons=quotedata.gallons,
+        date=quotedata.date,
+        suggestedprice=suggested_price_per_gallon,
+        total=total_price
+    )
+    created_quote = crud.create_quote(new_quote, db)
+    return created_quote
     return crud.create_quote(current_user.id, quote, db)
 
 
