@@ -10,10 +10,10 @@ import app.models.user_quotes_model as models
 import app.schemas.user_quotes_schema as schemas
 from app.schemas.user_schema import User
 from app.auth import get_current_active_user
-import PricingModule
+from .. import PricingModule
 
 router = APIRouter()
-pricing_module = PricingModule()
+pricing_module = PricingModule.pricingmodule()
 
 def get_db():
     db = SessionLocal()
