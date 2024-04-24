@@ -30,7 +30,7 @@ const LoginRegisterForm = () => {
 
   const registerUser = async (username, password) => {
     try {
-      const response = await axios.post('http://localhost:5173/user', {
+      const response = await axios.post('http://localhost:8000/user', {
         username,
         password
       });
@@ -47,7 +47,7 @@ const LoginRegisterForm = () => {
       const formData = new FormData();
       formData.append('username', username);
       formData.append('password', password);
-      const response = await axios.post('http://localhost:5173/login', formData, {
+      const response = await axios.post('http://localhost:8000/login', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       localStorage.setItem('token', response.data.access_token); // Store the token

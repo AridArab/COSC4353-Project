@@ -1,8 +1,17 @@
 import HistoryTableRow from "./HistoryTableRow";
+import axios from "axios";
 
 
 function HistoryTable() {
 
+    /*axios.get('http://localhost:8000/api/user/me/quote', {
+        headers: {
+            {localStorage.getItem("token")};
+        }
+    })
+    .then((response) => console.log(response.data))
+    .catch((err) => console.error(err));*/
+        
     let data = [
         {
             id: 1,

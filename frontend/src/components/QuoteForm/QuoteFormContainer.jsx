@@ -28,7 +28,7 @@ function QuoteFormContainer() {
            
         };
         try {
-            const response = await axios.post('http://localhost:5173/api/user_quotes', formData);
+            const response = await axios.post('http://localhost:8000/api/user/me/quote/create', formData);
             console.log('Order confirmed:', response.data);
             // Handle further actions, e.g., showing a success message, redirecting, etc.
         } catch (error) {

@@ -25,9 +25,11 @@ def create_quote(userid: int, quote: schemas.UserQuotesCreate, db: Session):
 
 def get_quote(quote_id: int, db: Session):
     quote = db.query(models.UserQuotes).filter(models.UserQuotes.id == quote_id).first()
+    print(quote)
     return quote
 
 def get_quotes_by_user_id(user_id: int, db: Session):
     quotes = db.query(models.UserQuotes).filter(models.UserQuotes.userid == user_id).all()
+    print(quotes)
     return quotes
 

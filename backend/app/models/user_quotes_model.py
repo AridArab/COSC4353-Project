@@ -8,7 +8,7 @@ from app.database import Base
 class UserQuotes(Base):
     __tablename__ = "user_quotes"
     id = Column(Integer, primary_key=True, index=True)
-    userid = Column(Integer, ForeignKey("users.id"), unique=True, index=True)
+    userid = Column(Integer, ForeignKey("users.id"), index=True)
     gallons = Column(Integer)
     address = Column(String)
     city = Column(String)
