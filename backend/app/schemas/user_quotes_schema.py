@@ -14,6 +14,7 @@ class UserQuotesCreate(UserQuotesBase):
 
 
 class UserQuotes(UserQuotesBase):
+    id: int
     userid: int
     address: str
     suggestedprice: float

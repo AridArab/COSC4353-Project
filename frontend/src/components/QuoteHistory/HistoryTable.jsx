@@ -1,81 +1,56 @@
 import HistoryTableRow from "./HistoryTableRow";
 import axios from "axios";
+import {useEffect, useState} from "react";
 
 
 function HistoryTable() {
+    let [Data, setData] = useState([]);
 
-    /*axios.get('http://localhost:8000/api/user/me/quote', {
-        headers: {
-            {localStorage.getItem("token")};
+    // Loads api data once
+    useEffect(() => {
+        let ignore = false;
+        axios.get('http://localhost:8000/api/user/me/quote', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        .then((response) => {
+            if (!ignore) {
+                setData(response.data);
+            }
+        })
+        return () => {
+            // Set to false so data does not keep loading
+            ignore = true;
         }
-    })
-    .then((response) => console.log(response.data))
-    .catch((err) => console.error(err));*/
-        
-    let data = [
-        {
-            id: 1,
-            gallons: 30,
-            address: "062 EastPark Ln",
-            date: "January 5th, 2024",
-            price: 200,
-            total: 6000
-        },
-        {
-            id: 2,
-            gallons: 10,
-            address: "9174 BrownWood Dr",
-            date: "January 17th, 2024",
-            price: 150,
-            total: 1500
-        },
-        {
-            id: 3,
-            gallons: 50,
-            address: "30621 Lipton Ln",
-            date: "February 2nd, 2024",
-            price: 500,
-            total: 25000
-        },
-        {
-            id: 4,
-            gallons: 40,
-            address: "605 AppleTree Dr",
-            date: "January 29th, 2024",
-            price: 300,
-            total: 12000
-        },
-        {
-            id: 5,
-            gallons: 5,
-            address: "773 Daniels Ln",
-            date: "February 9th, 2024",
-            price: 700,
-            total: 3500
-        }
-    ]
+    }, [])
 
+    
     const rows = [];
+    console.log(Data);
 
-    for (let i = 0; i < data.length; i++) {
-        rows.push(<HistoryTableRow id={data[i].id} gallons={data[i].gallons} address={data[i].address} date={data[i].date} price={data[i].price} total={data[i].total} />)
-        rows.push(<HistoryTableRow id={data[i].id} gallons={data[i].gallons} address={data[i].address} date={data[i].date} price={data[i].price} total={data[i].total} />)
-        rows.push(<HistoryTableRow id={data[i].id} gallons={data[i].gallons} address={data[i].address} date={data[i].date} price={data[i].price} total={data[i].total} />)
-        rows.push(<HistoryTableRow id={data[i].id} gallons={data[i].gallons} address={data[i].address} date={data[i].date} price={data[i].price} total={data[i].total} />)
-        rows.push(<HistoryTableRow id={data[i].id} gallons={data[i].gallons} address={data[i].address} date={data[i].date} price={data[i].price} total={data[i].total} />)
+    // Adds rows for each quote entry
+    for (let i = 0; i < Data.length; i++) {
+        rows.push(<HistoryTableRow key={Data[i].id} gallons={Data[i].gallons} address={Data[i].address} date={Data[i].date} price={Data[i].suggestedprice} total={Data[i].total} />)
     }
+    
+    
 
     return(
         <div className="history-table">
             <table>
-                <tr>
-                    <th>Gallons Requested</th>
-                    <th>Delivery Address</th>
-                    <th>Delivery Date</th>
-                    <th>Suggested Price</th>
-                    <th>Total Amount Due</th>
-                </tr>
-                {rows}
+                <thead>
+                    <tr>
+                        <th>Gallons Requested</th>
+                        <th>Delivery Address</th>
+                        <th>Delivery Date</th>
+                        <th>Suggested Price</th>
+                        <th>Total Amount Due</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
             </table>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 const LoginRegisterForm = () => {
@@ -30,7 +30,7 @@ const LoginRegisterForm = () => {
 
   const registerUser = async (username, password) => {
     try {
-      const response = await axios.post('http://localhost:8000/user', {
+      const response = await axios.post('http://localhost:8000/api/user', {
         username,
         password
       });
@@ -42,13 +42,15 @@ const LoginRegisterForm = () => {
     }
   };
 
-  const loginUser = async (username, password) => {
+  const loginUser = async (user, pass) => {
     try {
       const formData = new FormData();
-      formData.append('username', username);
-      formData.append('password', password);
-      const response = await axios.post('http://localhost:8000/login', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+      formData.append('username', user);
+      formData.append('password', pass);
+      const response = await axios.post('http://localhost:8000/api/login', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
       localStorage.setItem('token', response.data.access_token); // Store the token
       console.log('Login successful:', response.data);

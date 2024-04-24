@@ -14,7 +14,6 @@ function HistoryTableRow(props) {
 
 
 HistoryTableRow.propTypes = {
-    id: PropTypes.number,
     gallons: PropTypes.number,
     address: PropTypes.string,
     date: PropTypes.string,
