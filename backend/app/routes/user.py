@@ -22,7 +22,7 @@ def get_db():
 
 # CRUD operations
 # Create
-@router.post("/user/", response_model=schemas.User)
+@router.post("/user/", response_model=schemas.UserCreate)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_username(user.username, db)
     # TODO: redirect to edit page
