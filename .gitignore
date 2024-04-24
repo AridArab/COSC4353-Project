@@ -28,6 +28,7 @@ venv
 __pycache__
 .env
 .venv
+env
 
 # Database files
 *.db
