@@ -9,11 +9,7 @@ function HistoryTable() {
     // Loads api data once
     useEffect(() => {
         let ignore = false;
-        axios.get('http://localhost:8000/api/user/me/quote', {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem("token")}`
-            }
-        })
+        axios.get('http://localhost:8000/api/user/me/quote')
         .then((response) => {
             if (!ignore) {
                 setData(response.data);

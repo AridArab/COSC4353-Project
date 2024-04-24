@@ -2,7 +2,7 @@
 function NavBar() {
     return (
         <div className="navbar">
-            <a className="navbar-element" href="/Home">Home</a>
+            <a className="navbar-element" href="/">Home</a>
             <a className="navbar-element" href="/Profile">Profile</a>
             <a className="navbar-element" href="/QuoteForm">Quote Form</a>
             <a className="navbar-element" href="/QuoteHistory">Quote History</a>

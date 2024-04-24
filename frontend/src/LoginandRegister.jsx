@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './authprovider/authProvider';
 
 const LoginRegisterForm = () => {
   const [isSignUp, setIsSignUp] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { setToken } = useAuth();
+  const navigate = useNavigate();
 
   const handleSignInClick = () => {
     setIsSignUp(false);
@@ -25,7 +29,7 @@ const LoginRegisterForm = () => {
       await loginUser(username, password);
     }
     // Redirect logic after signup/login (e.g., to home page)
-    window.location.href = '/home'; // Example redirect to '/home' page
+    navigate("/", { replace: true });// Example redirect to '/home' page
   };
 
   const registerUser = async (username, password) => {
@@ -52,7 +56,7 @@ const LoginRegisterForm = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      localStorage.setItem('token', response.data.access_token); // Store the token
+      setToken(response.data.access_token); // Store the token
       console.log('Login successful:', response.data);
       // Redirect to home page or display a success message
     } catch (error) {
