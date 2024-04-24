@@ -1,0 +1,19 @@
+services:
+  backend:
+    container_name: scuffed-oil-and-energy-api
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      ./backend:/app
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - frontend
