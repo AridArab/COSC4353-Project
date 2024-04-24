@@ -18,4 +18,4 @@ def calculate_price(self, gallons_requested, is_in_state, has_history):
         # Calculate total price
         total_price = suggested_price_per_gallon * gallons_requested
 
-        return total_price
+        return suggested_price_per_gallon, total_price
