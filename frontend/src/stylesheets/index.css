@@ -421,35 +421,39 @@ select.profile-field{
 
 /* Fuel Quote Page */
 
+.oilPump-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto; 
+  min-height: 100%;
+  width: 100%;
+}
 .quote-body-container {
     
   background-color: rgba(32, 29, 29, 0.87);
   width: 100%;
-  height: 200px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column; 
-  min-height: 75vh;
   position: relative; 
   z-index: -1;
 }
 
-.oilPump-img {
-
-  height: 1000px;
-  width: 100%;
-}
 
 .image-container {
-  position:relative;
-  display: inline-block; 
+  position:center;
+  display: center; 
 
 }
 
 .image-container::after {
   width: 100%; 
-  height: auto; 
+  height: 100%; 
   content: '';
   position: absolute;
   top: 0;
@@ -460,17 +464,20 @@ select.profile-field{
   pointer-events: none; 
 }
 
-.quote-form-container{
-  width: 650px; 
-  margin: auto; 
+.quote-form-container {
+  width: 650px;
   border-radius: 5px;
-  margin-top: -800px;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  padding: 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
   background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 .quote-form-container h1{
