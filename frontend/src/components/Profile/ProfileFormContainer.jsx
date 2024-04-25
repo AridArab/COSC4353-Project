@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 
 function ProfileFormContainer(){
-  const stateDict = {
+  const [stateDict, setStateDict] = useState({
     "AL": { name: "Alabama", selected: false },
     "AK": { name: "Alaska", selected: false },
     "AZ": { name: "Arizona", selected: false },
@@ -55,7 +55,7 @@ function ProfileFormContainer(){
     "WV": { name: "West Virginia", selected: false },
     "WI": { name: "Wisconsin", selected: false },
     "WY": { name: "Wyoming", selected: false }
-  };
+  });
  
   const [dataFetched, setDataFetched] = useState(false);
   const [formData, setFormData] = useState({
@@ -84,7 +84,10 @@ function ProfileFormContainer(){
           zipcode: data.zipcode,
         });
         setDataFetched(true);
-        stateDict[data.state].selected=true;
+        const updatedStateDict = {...stateDict};
+        updatedStateDict[data.state].selected = true;
+        setStateDict(updatedStateDict);
+        //stateDict[data.state].selected=true;
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -155,10 +158,7 @@ function ProfileFormContainer(){
 
         <div className="profile-field-container">
           <p className="profile-field-label">State</p>
-          {/*<StateSelectorDropdown className="profile-field" value={formData.state} onChange={handleUpdate}/>*/}
-          {dataFetched ? 
-          <StateSelectorDropdown className="profile-field" states={stateDict} defaultValue={formData.state} onChange={handleUpdate}/> : ''
-          }
+          <StateSelectorDropdown className="profile-field" states={stateDict} defaultValue={formData.state} onChange={handleUpdate}/>
         </div>
 
         <div className="profile-field-container">
@@ -166,7 +166,7 @@ function ProfileFormContainer(){
           <input type="text" id="zipcode" name="zipcode" className="profile-field" placeholder="77004" value={formData.zipcode} onChange={handleUpdate}/>
         </div>
       
-        <button type="submit" className="profile-update-button">
+        <button type="submit" className="profile-submit-button">
           {dataFetched ? 'Update' : 'Create'}
         </button>
       </form>
