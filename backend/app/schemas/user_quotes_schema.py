@@ -9,6 +9,9 @@ import datetime
 class UserQuotesBase(BaseModel):
     gallons: int
     date: datetime.date
+    address: str
+    state: str
+    
 class UserQuotesCreate(UserQuotesBase):
     pass
 
@@ -16,7 +19,6 @@ class UserQuotesCreate(UserQuotesBase):
 class UserQuotes(UserQuotesBase):
     id: int
     userid: int
-    address: str
     suggestedprice: float
     total: float
     

@@ -11,7 +11,7 @@ class UserQuotes(Base):
     userid = Column(Integer, ForeignKey("users.id"), index=True)
     gallons = Column(Integer)
     address = Column(String)
-    city = Column(String)
+    state = Column(String)
     date = Column(Date)
     suggestedprice = Column(Double)
     total = Column(Double)

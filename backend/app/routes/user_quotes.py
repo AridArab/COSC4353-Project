@@ -29,8 +29,8 @@ async def create_quote(
     quote: schemas.UserQuotesCreate,
     db: Session = Depends(get_db)
 ):
-    is_in_state = True
-    has_history = False
+    is_in_state = True if quote.state == "TX" else False
+    has_history = False if not crud.get_quotes_by_user_id(current_user.id, db) else True
     suggested_price_per_gallon, total_price = pricing_module.calculate_price(
         quote.gallons, 
         is_in_state, 
@@ -39,13 +39,13 @@ async def create_quote(
     # Create a new quote object to be saved in the database
     new_quote = models.UserQuotes(
         userid=current_user.id,
-        address="User's address",  # Replace with actual address logic
+        address=quote.deliveryAddress,  # Replace with actual address logic
         gallons=quote.gallons,
         date=quote.date,
         suggestedprice=suggested_price_per_gallon,
         total=total_price
     )
-    return crud.create_quote(current_user.id, new_quote, db)
+    return new_quote
 
 
 @router.get("/user/me/quote", response_model=list[schemas.UserQuotes])

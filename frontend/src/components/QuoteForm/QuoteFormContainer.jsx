@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function QuoteFormContainer() {
-    const [gallonsRequested, setGallonsRequested] = useState('');
+    const [gallonsRequested, setGallonsRequested] = useState();
     const [deliveryAddress, setDeliveryAddress] = useState('Loading address...'); // Initially set to loading
+    const [state, setState] = useState('Loading state...');
+    const [deliveryDate, setDeliveryDate] = useState(null); // Set to null, will be updated in dateUpdate function
     const [suggestedPrice] = useState(2.50);
     const [totalAmountDue, setTotalAmountDue] = useState('');
     const [orderConfirmed, setOrderConfirmed] = useState(false);
@@ -21,13 +23,20 @@ function QuoteFormContainer() {
             const data = response.data;
             if (data) {
                 // Update deliveryAddress with city, state, and zipcode combined
-                setDeliveryAddress(`${data.address1}, ${data.city}, ${data.state} ${data.zipcode}`);
+                setDeliveryAddress(data.address1);
+                setState(data.state);
             }
         } catch (error) {
             console.error('Error fetching user profile:', error);
             setDeliveryAddress('Failed to load address');
         }
     };
+
+    function dateUpdate(e) {
+        const dateValue = e.target.value;
+        console.log("DATE:", dateValue);
+        setDeliveryDate(dateValue);
+    }
 
     const calculateTotalAmountDue = () => {
         const total = gallonsRequested * suggestedPrice;
@@ -36,18 +45,26 @@ function QuoteFormContainer() {
     };
 
     const handleConfirmOrder = async () => {
-        const formData = {
-            gallonsRequested,
-            deliveryAddress,
-            suggestedPrice,
-            totalAmountDue,
-        };
+        const formData = new FormData();
+        formData.append("gallonsRequested", gallonsRequested);
+        formData.append("deliveryAddress", deliveryAddress);
+        formData.append("deliveryDate", deliveryDate);
+        formData.append("state", state);
+        console.log("type:", deliveryDate.type);
         try {
-            const response = await axios.post('http://localhost:8000/api/user/me/quote/create', formData);
+            console.log(formData.get("gallonsRequested"));
+            console.log(formData.get("deliveryAddress"));
+            console.log(formData.get("deliveryDate"));
+            console.log(formData.get("state"));
+            const response = await axios.post('http://localhost:8000/api/user/me/quote/create', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-date'
+                }
+            });
             setConfirmationData(response.data);
             setOrderConfirmed(true);
         } catch (error) {
-            console.error('Failed to confirm order:', error);
+            console.error('Failed to confirm order:', response.data);
             alert('Failed to confirm order: ' + error.message);
         }
     };
@@ -92,12 +109,24 @@ function QuoteFormContainer() {
                         readOnly />
                 </div>
                 <div className="quote-form-bubble">
+                    <label htmlFor="state">State</label>
+                    <input
+                        type="text"
+                        id="state"
+                        className="form-input"
+                        name="state"
+                        value={state}
+                        readOnly />
+                </div>
+                <div className="quote-form-bubble">
                     <label htmlFor="deliveryDate">Delivery Date</label>
                     <input
                         type="date"
                         id="deliveryDate"
                         className="form-input"
                         name="deliveryDate"
+                        value={deliveryDate}
+                        onChange={(e) => dateUpdate(e)}
                         required />
                 </div>
                 <div className="quote-form-bubble">
