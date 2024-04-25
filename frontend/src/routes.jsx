@@ -10,6 +10,7 @@ import QuoteForm from './QuoteForm.jsx'
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
 import LoginRegister from './LoginandRegister.jsx';
+import Logout from './Logout.jsx';
 import NotFound from './NotFound.jsx';
 import './stylesheets/style.css';
 import './stylesheets/index.css';
@@ -21,6 +22,10 @@ const Routes = () => {
     {
       path: "/Login",
       element: <LoginRegister/>
+    },
+    {
+      path: "*",
+      element: <NotFound/>
     }
   ];
 
@@ -44,6 +49,10 @@ const Routes = () => {
         {
           path: "/Profile",
           element: <Profile/>
+        },
+        {
+          path: "/Logout",
+          element: <Logout/>
         }
       ]
     }
@@ -56,18 +65,10 @@ const Routes = () => {
     }
   ];
 
-  const routesForeNotFound = [
-    {
-      path: "*",
-      element: <NotFound/>
-    }
-  ]
-
   const router = createBrowserRouter([
     ...routesForPublic,
     ...(!token ? routesForNotAuthenticated : []),
-    ...routesForAuthenticated,
-    ...routesForeNotFound,
+    ...routesForAuthenticated
   ]);
 
 
