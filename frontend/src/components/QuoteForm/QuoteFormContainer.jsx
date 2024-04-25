@@ -3,12 +3,31 @@ import axios from 'axios';
 
 function QuoteFormContainer() {
     const [gallonsRequested, setGallonsRequested] = useState('');
-    const [deliveryAddress] = useState('123 Houston, TX, 12345'); 
-    const [suggestedPrice] = useState(2.50); 
+    const [deliveryAddress, setDeliveryAddress] = useState('Loading address...'); // Initially set to loading
+    const [suggestedPrice] = useState(2.50);
     const [totalAmountDue, setTotalAmountDue] = useState('');
+    const [orderConfirmed, setOrderConfirmed] = useState(false);
+    const [confirmationData, setConfirmationData] = useState(null);
 
     useEffect(() => {
-    }, []);
+        // Fetch the user's profile data to get the delivery address
+        fetchUserProfile();
+        calculateTotalAmountDue();
+    }, [gallonsRequested, suggestedPrice]);
+
+    const fetchUserProfile = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/api/user/me/profile');
+            const data = response.data;
+            if (data) {
+                // Update deliveryAddress with city, state, and zipcode combined
+                setDeliveryAddress(`${data.address1}, ${data.city}, ${data.state} ${data.zipcode}`);
+            }
+        } catch (error) {
+            console.error('Error fetching user profile:', error);
+            setDeliveryAddress('Failed to load address');
+        }
+    };
 
     const calculateTotalAmountDue = () => {
         const total = gallonsRequested * suggestedPrice;
@@ -16,26 +35,35 @@ function QuoteFormContainer() {
         setTotalAmountDue(formattedTotal);
     };
 
-    useEffect(() => {
-        calculateTotalAmountDue();
-    }, [gallonsRequested, suggestedPrice]);
     const handleConfirmOrder = async () => {
         const formData = {
             gallonsRequested,
             deliveryAddress,
             suggestedPrice,
             totalAmountDue,
-           
         };
         try {
             const response = await axios.post('http://localhost:8000/api/user/me/quote/create', formData);
-            console.log('Order confirmed:', response.data);
-            // Handle further actions, e.g., showing a success message, redirecting, etc.
+            setConfirmationData(response.data);
+            setOrderConfirmed(true);
         } catch (error) {
             console.error('Failed to confirm order:', error);
-            // Handle error, e.g., showing an error message
+            alert('Failed to confirm order: ' + error.message);
         }
     };
+
+    if (orderConfirmed && confirmationData) {
+        // Render the confirmation page
+        return (
+            <div>
+                <h1>Order Confirmation</h1>
+                <p>Gallons Requested: {confirmationData.gallonsRequested}</p>
+                <p>Delivery Address: {confirmationData.deliveryAddress}</p>
+                <p>Suggested Price / Gallon: ${confirmationData.suggestedPrice}</p>
+                <p>Total Amount Due: ${confirmationData.totalAmountDue}</p>
+            </div>
+        );
+    }
 
     return (
         <div className="quote-form-container">
@@ -85,7 +113,7 @@ function QuoteFormContainer() {
                 <div className="quote-form-bubble">
                     <label htmlFor="totalAmountDue">Total Amount Due $</label>
                     <input
-                        type="text"
+                        type="number"
                         id="totalAmountDue"
                         className="form-input"
                         name="totalAmountDue"
@@ -93,7 +121,7 @@ function QuoteFormContainer() {
                         readOnly />
                 </div>
                 <button type="button" id="editProfile">Edit Profile</button>
-                <button type="button" id="confirmOrder">Confirm Order</button>
+                <button type="button" id="confirmOrder" onClick={handleConfirmOrder}>Confirm Order</button>
             </form>
         </div>
     );
