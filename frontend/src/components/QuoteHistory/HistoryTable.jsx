@@ -9,6 +9,7 @@ function HistoryTable() {
     // Loads api data once
     useEffect(() => {
         let ignore = false;
+        console.log("here");
         axios.get('http://localhost:8000/api/user/me/quote')
         .then((response) => {
             if (!ignore) {
@@ -23,7 +24,6 @@ function HistoryTable() {
 
     
     const rows = [];
-    console.log(Data);
 
     // Adds rows for each quote entry
     for (let i = 0; i < Data.length; i++) {
