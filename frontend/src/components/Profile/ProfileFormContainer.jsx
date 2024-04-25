@@ -100,10 +100,18 @@ function ProfileFormContainer(){
 
   
   const handleUpdate = async (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value
-    });
+    if (event.target.name === 'zipcode') {
+      const value = event.target.value.replace(/\D/g, '').slice(0, 5); // Remove non-numeric characters and limit to 5 characters
+      setFormData({
+        ...formData,
+        [event.target.name]: value
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.value
+      });
+    }
     //console.log(event.target.name, event.target.value);
   };
 
