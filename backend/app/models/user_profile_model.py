@@ -14,6 +14,6 @@ class UserProfile(Base):
     address2 = Column(String, nullable=True)
     city = Column(String)
     state = Column(String)
-    zipcode = Column(String)
+    zipcode = Column(String(5))
 
     #user = relationship("User", back_populates="users")
