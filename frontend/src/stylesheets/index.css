@@ -72,6 +72,13 @@ input.navbar-element {
   max-width: 150;
 }
 
+/* 404 Page */
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
 
 /* Quote History Page */
 
